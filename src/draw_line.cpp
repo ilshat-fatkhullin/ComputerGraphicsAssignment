@@ -7,7 +7,7 @@
 #include <algorithm>
 
 
-LineDrawing::LineDrawing(unsigned short width, unsigned short height): ColorSpace(width, height)
+LineDrawing::LineDrawing(unsigned short width, unsigned short height) : ColorSpace(width, height)
 {
 
 }
@@ -41,8 +41,6 @@ void LineDrawing::DrawLine(unsigned short x_begin, unsigned short y_begin, unsig
 
 	for (unsigned short x = x_begin; x <= x_end; x++) {
 		float y = y_begin + slope * (x - x_begin);
-
-		//std::cout << "Line: " << x << " " << y << ", " << (steep ? "Steep" : "Gentle") << std::endl;
 
 		if (steep) {
 			ColorSpace::SetPixel(y, x, color);
