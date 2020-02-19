@@ -41,7 +41,7 @@ group "01. Black image"
       files { "lib/stb/stb_image.h", "tests/utils.h", "tests/black_image_tests.cpp" }
       links "Black image lib"
       debugargs { "--benchmark-samples", "25" }
---[[
+
 group "02. Color space"
    project "Color space lib"
       kind "StaticLib"
@@ -266,4 +266,3 @@ group "10. Shadow mapping"
          files { "lib/stb/stb_image.h", "tests/utils.h", "tests/shadow_mapping_tests.cpp" }
          links "Shadow mapping lib"
          debugargs { "--benchmark-samples", "25" }
---]]
