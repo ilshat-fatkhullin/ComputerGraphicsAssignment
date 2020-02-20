@@ -74,6 +74,8 @@ void Projection::DrawScene()
 		for (unsigned short i = 0; i < 3; i++) {
 			translated[i] = linalg::mul(resultMatrix, face.vertexes[i]);
 			translated[i] /= translated[i].w;
+			translated[i].x = x_center + x_center * translated[i].x;
+			translated[i].y = y_center - y_center * translated[i].y;
 		}
 		DrawTriangle(translated, color(255, 255, 255));
 	}
@@ -81,19 +83,19 @@ void Projection::DrawScene()
 
 void Projection::DrawTriangle(float4 triangle[3], color color)
 {
-	DrawLine(static_cast<unsigned short>(x_center + x_center * triangle[0].x),
-		static_cast<unsigned short>(y_center - y_center * triangle[0].y),
-		static_cast<unsigned short>(x_center + x_center * triangle[1].x),
-		static_cast<unsigned short>(y_center - y_center * triangle[1].y), color);
+	DrawLine(static_cast<unsigned short>(triangle[0].x),
+		static_cast<unsigned short>(triangle[0].y),
+		static_cast<unsigned short>(triangle[1].x),
+		static_cast<unsigned short>(triangle[1].y), color);
 
-	DrawLine(static_cast<unsigned short>(x_center + x_center * triangle[1].x),
-		static_cast<unsigned short>(y_center - y_center * triangle[1].y),
-		static_cast<unsigned short>(x_center + x_center * triangle[2].x),
-		static_cast<unsigned short>(y_center - y_center * triangle[2].y), color);
+	DrawLine(static_cast<unsigned short>(triangle[1].x),
+		static_cast<unsigned short>(triangle[1].y),
+		static_cast<unsigned short>(triangle[2].x),
+		static_cast<unsigned short>(triangle[2].y), color);
 
-	DrawLine(static_cast<unsigned short>(x_center + x_center * triangle[2].x),
-		static_cast<unsigned short>(y_center - y_center * triangle[2].y),
-		static_cast<unsigned short>(x_center + x_center * triangle[0].x),
-		static_cast<unsigned short>(y_center - y_center * triangle[0].y), color);
+	DrawLine(static_cast<unsigned short>(triangle[2].x),
+		static_cast<unsigned short>(triangle[2].y),
+		static_cast<unsigned short>(triangle[0].x),
+		static_cast<unsigned short>(triangle[0].y), color);
 }
 
